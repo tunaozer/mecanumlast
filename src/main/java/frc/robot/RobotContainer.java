@@ -18,6 +18,7 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
@@ -35,7 +36,7 @@ public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   private final ClimbSubsystem m_climb =new ClimbSubsystem();
-
+  private final IntakeSubsystem m_intake= new IntakeSubsystem();
   // The driver's controller
   PS4Controller m_driverController = new PS4Controller(OIConstants.kDriverControllerPort);
 
@@ -78,6 +79,14 @@ public class RobotContainer {
     new JoystickButton(m_driverController, 6)
     .whileTrue(new InstantCommand (()->m_climb.climbDisable()))
     .whileFalse(new InstantCommand(()->m_climb.climbStop())); 
+
+    new JoystickButton(m_driverController, 4)
+        .onTrue(new InstantCommand(()->m_intake.intakeActive()))
+        .onFalse(new InstantCommand(()->m_intake.intakeStop()));
+    new JoystickButton(m_driverController, 1)
+        .onTrue(new InstantCommand(()->m_intake.intakeDisable()))
+        .onFalse(new InstantCommand(()->m_intake.intakeStop()));
+    
 }
 
 

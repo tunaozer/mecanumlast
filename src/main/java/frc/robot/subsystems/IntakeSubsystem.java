@@ -11,13 +11,11 @@ import frc.robot.Constants;
 
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new ClimbSub. */
-  CANSparkMax climb1;
-  CANSparkMax climb2;
+  CANSparkMax intake;
 
   public IntakeSubsystem() {
-    climb1 = new CANSparkMax(Constants.ClimbConstants.climbUstPort, MotorType.kBrushless);
-    climb2 = new CANSparkMax(Constants.ClimbConstants.climbAltPort, MotorType.kBrushless);
-    climb2.follow(climb1);
+    intake = new CANSparkMax(Constants.ClimbConstants.climbUstPort, MotorType.kBrushless);
+
   }
 
   @Override
@@ -25,17 +23,16 @@ public class IntakeSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void climbActive(){
-    climb1.set(0.5);
-    climb2.set(0.5);
+  public void intakeActive(){
+    intake.set(1);
+    
   }
-  public void climbDisable(){
-    climb1.set(-0.5);
-    climb2.set(-0.5);
+  public void intakeDisable(){
+    intake.set(-0.5);
+    
   }
-  public void climbStop(){
-    climb1.set(0.003);
-    climb2.set(0.003);
+  public void intakeStop(){
+    intake.set(0);
   }
 }
 
