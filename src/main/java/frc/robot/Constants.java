@@ -19,12 +19,12 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
  */
 public final class Constants {
   public static final class DriveConstants {
-    public static final int kFrontLeftMotorPort = 0;
-    public static final int kRearLeftMotorPort = 1;
-    public static final int kFrontRightMotorPort = 2;
-    public static final int kRearRightMotorPort = 3;
+    public static final int kFrontLeftMotorPort = 1;
+    public static final int kRearLeftMotorPort = 2;
+    public static final int kFrontRightMotorPort = 3;
+    public static final int kRearRightMotorPort = 4;
 
-    public static final int[] kFrontLeftEncoderPorts = new int[] {0, 1};
+    public static final int[] kFrontLeftEncoderPorts = new int[] {0, 1}; 
     public static final int[] kRearLeftEncoderPorts = new int[] {2, 3};
     public static final int[] kFrontRightEncoderPorts = new int[] {4, 5};
     public static final int[] kRearRightEncoderPorts = new int[] {6, 7};
@@ -87,8 +87,8 @@ public final class Constants {
             kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
   }
   public static final class ClimbConstants{
-    public static final int climbUstPort=9;
-    public static final int climbAltPort=10;
+    public static final int climbUstPort=7;
+    public static final int climbAltPort=6;
 
   }
 
