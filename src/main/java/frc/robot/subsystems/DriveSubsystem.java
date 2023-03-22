@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
+import edu.wpi.first.wpilibj.SPI;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -11,12 +12,14 @@ import edu.wpi.first.math.kinematics.MecanumDriveMotorVoltages;
 import edu.wpi.first.math.kinematics.MecanumDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveWheelPositions;
 import edu.wpi.first.math.kinematics.MecanumDriveWheelSpeeds;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+//import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.Constants.DriveConstants;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
+//import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 
 public class DriveSubsystem extends SubsystemBase {
   private final WPI_VictorSPX m_frontLeft = new WPI_VictorSPX(DriveConstants.kFrontLeftMotorPort);
@@ -56,7 +59,7 @@ public class DriveSubsystem extends SubsystemBase {
           DriveConstants.kRearRightEncoderReversed);
 
   // The gyro sensor
-  private final Gyro m_gyro = new ADXRS450_Gyro();
+ AHRS m_gyro = new AHRS(SPI.Port.kMXP);
 
   // Odometry class for tracking robot pose
   MecanumDriveOdometry m_odometry =
